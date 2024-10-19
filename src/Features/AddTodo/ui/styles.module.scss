@@ -1,0 +1,7 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 4fr minmax(min-content, 1fr);
+  align-items: stretch;
+  align-content: stretch;
+  gap: 16px;
+}

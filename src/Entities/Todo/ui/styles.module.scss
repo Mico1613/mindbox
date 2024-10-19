@@ -1,0 +1,16 @@
+.todo {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+
+  > span {
+    color: var(--secondary-grey);
+  }
+
+  .completedTodoText {
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+}

@@ -9,3 +9,21 @@
   font-weight: 400;
   font-style: normal;
 }
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+:root {
+  --primary-pink: #ef619387;
+  --primary-grey: #bababa;
+  --secondary-grey: #5c5c5c;
+  --light-grey: #e1e1e1;
+}
