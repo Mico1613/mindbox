@@ -12,13 +12,9 @@ import { MAX_TODOS_LENGTH } from "../model";
 
 export const TodoApp = () => {
   const [localStorageValue, setLocalStorageStateValue] =
-    useLocalStorage("todos");
+    useLocalStorage<Todo[]>("todos");
 
-  const [todos, setTodos] = useState<Todo[]>(() =>
-    Array.isArray(JSON.parse(localStorageValue))
-      ? JSON.parse(localStorageValue)
-      : [],
-  );
+  const [todos, setTodos] = useState<Todo[]>(localStorageValue ?? []);
 
   const [todosVisibilityType, setTodosVisibilityType] =
     useState<TodosVisibility>("all");
@@ -30,7 +26,7 @@ export const TodoApp = () => {
   };
 
   useEffect(() => {
-    setLocalStorageStateValue(JSON.stringify(todos));
+    setLocalStorageStateValue(todos);
   }, [setLocalStorageStateValue, todos]);
 
   return (
