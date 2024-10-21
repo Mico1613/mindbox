@@ -22,7 +22,7 @@ export const TodoItem = ({ todo, setTodos }: Props) => {
     });
   };
   return (
-    <button className={styles.todo} onClick={handleClick}>
+    <button className={styles.todo} onClick={handleClick} title={todo.text}>
       <Checkbox checked={todo.completed} />
       <span className={cn({ [styles.completedTodoText]: todo.completed })}>
         {todo.text}

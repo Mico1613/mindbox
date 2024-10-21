@@ -12,7 +12,7 @@ export const SwitchTodosType = ({ type, setType }: Props) => {
     _e: MouseEvent<HTMLElement>,
     newValue: TodosVisibility,
   ) => {
-    setType(newValue);
+    if (newValue) setType(newValue);
   };
   return (
     <ToggleButtonGroup

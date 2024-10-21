@@ -4,4 +4,10 @@
   align-items: stretch;
   align-content: stretch;
   gap: 16px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+    gap: 8px;
+  }
 }

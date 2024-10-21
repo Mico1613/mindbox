@@ -1,12 +1,16 @@
 .todo {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: auto 1fr;
   align-items: center;
   justify-content: start;
   cursor: pointer;
 
   > span {
     color: var(--secondary-grey);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
   }
 
   .completedTodoText {

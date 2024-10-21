@@ -3,12 +3,11 @@ import { v4 } from "uuid";
 import { Todo } from "../../../Entities";
 import styles from "./styles.module.scss";
 import { Button, TextField } from "@mui/material";
+import { MAX_INPUT_LENGTH } from "../model";
 
 type Props = {
   addTodo: (todo: Todo) => void;
 };
-
-const MAX_INPUT_LENGTH = 100;
 
 export const AddTodo = ({ addTodo }: Props) => {
   const [inputValue, setInputValue] = useState("");
