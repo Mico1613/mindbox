@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { AddTodo, DeleteCompleted, TodosVisibility } from "../../../Features";
 import { Todo, TodoItem } from "../../../Entities";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getIncompleteTodosLength,
   visibilityTypeConditionRender,
@@ -9,6 +9,13 @@ import {
 import { SwitchTodosType } from "../../../Features";
 import { useLocalStorage } from "../../../Shared";
 import { MAX_TODOS_LENGTH } from "../model";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const notify = () =>
+  toast(
+    `Вы создали слишком много тудушек. Их должно быть не больше ${MAX_TODOS_LENGTH}.`,
+  );
 
 export const TodoApp = () => {
   const [localStorageValue, setLocalStorageStateValue] =
@@ -19,9 +26,14 @@ export const TodoApp = () => {
   const [todosVisibilityType, setTodosVisibilityType] =
     useState<TodosVisibility>("all");
 
+  const todoListRef = useRef<HTMLUListElement>(null);
+
   const addTodo = (todo: Todo) => {
     if (todos.length < MAX_TODOS_LENGTH) {
       setTodos((prev) => [...prev, todo]);
+    }
+    if (todos.length === MAX_TODOS_LENGTH - 1) {
+      notify();
     }
   };
 
@@ -29,10 +41,18 @@ export const TodoApp = () => {
     setLocalStorageStateValue(todos);
   }, [setLocalStorageStateValue, todos]);
 
+  useEffect(() => {
+    const list = todoListRef.current;
+
+    if (list && todos.length !== localStorageValue?.length) {
+      list.scrollTo({ top: list.scrollHeight, behavior: "smooth" });
+    }
+  }, [todos.length]);
+
   return (
     <main className={styles.main}>
       <AddTodo addTodo={addTodo} />
-      <ul className={styles.todoList}>
+      <ul className={styles.todoList} ref={todoListRef}>
         {todos.map((todo) =>
           visibilityTypeConditionRender(
             todosVisibilityType,
@@ -51,6 +71,7 @@ export const TodoApp = () => {
         />
         <DeleteCompleted setTodos={setTodos} />
       </div>
+      <ToastContainer />
     </main>
   );
 };
