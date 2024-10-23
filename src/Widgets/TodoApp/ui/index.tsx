@@ -27,6 +27,7 @@ export const TodoApp = () => {
     useState<TodosVisibility>("all");
 
   const todoListRef = useRef<HTMLUListElement>(null);
+  const prevTodoLength = useRef(0);
 
   const addTodo = (todo: Todo) => {
     if (todos.length < MAX_TODOS_LENGTH) {
@@ -44,9 +45,15 @@ export const TodoApp = () => {
   useEffect(() => {
     const list = todoListRef.current;
 
-    if (list && todos.length !== localStorageValue?.length) {
+    if (
+      list &&
+      todos.length !== localStorageValue?.length &&
+      todos.length > prevTodoLength.current
+    ) {
       list.scrollTo({ top: list.scrollHeight, behavior: "smooth" });
     }
+    prevTodoLength.current = todos.length;
+    // eslint-disable-next-line
   }, [todos.length]);
 
   return (
