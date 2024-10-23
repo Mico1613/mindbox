@@ -21,9 +21,15 @@ export const SwitchTodosType = ({ type, setType }: Props) => {
       exclusive
       onChange={handleChange}
     >
-      <ToggleButton value="all">All</ToggleButton>
-      <ToggleButton value="active">Active</ToggleButton>
-      <ToggleButton value="completed">Completed</ToggleButton>
+      <ToggleButton value="all" data-testid="toggle-type-all">
+        All
+      </ToggleButton>
+      <ToggleButton value="active" data-testid="toggle-type-active">
+        Active
+      </ToggleButton>
+      <ToggleButton value="completed" data-testid="toggle-type-completed">
+        Completed
+      </ToggleButton>
     </ToggleButtonGroup>
   );
 };

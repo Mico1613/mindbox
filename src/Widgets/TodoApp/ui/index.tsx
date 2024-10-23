@@ -42,7 +42,9 @@ export const TodoApp = () => {
         )}
       </ul>
       <div className={styles.footer}>
-        <span>Осталось выполнить: {getIncompleteTodosLength(todos)}</span>
+        <span data-testid="remains-to-complete">
+          Осталось выполнить: {getIncompleteTodosLength(todos)}
+        </span>
         <SwitchTodosType
           setType={setTodosVisibilityType}
           type={todosVisibilityType}

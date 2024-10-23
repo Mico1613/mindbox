@@ -10,5 +10,9 @@ export const DeleteCompleted = ({ setTodos }: Props) => {
   const handleClick = () => {
     setTodos((prev) => prev.filter((todo) => !todo.completed));
   };
-  return <Button onClick={handleClick}>Удалить выполненные</Button>;
+  return (
+    <Button onClick={handleClick} data-testid="delete-completed">
+      Удалить выполненные
+    </Button>
+  );
 };

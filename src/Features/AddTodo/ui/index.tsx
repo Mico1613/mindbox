@@ -52,10 +52,15 @@ export const AddTodo = ({ addTodo }: Props) => {
         slotProps={{
           htmlInput: {
             maxLength: MAX_INPUT_LENGTH,
+            "data-testid": "add-todo-input",
           },
         }}
       />
-      <Button onClick={handleAddTodo} variant="outlined">
+      <Button
+        onClick={handleAddTodo}
+        variant="outlined"
+        data-testid="add-todo-button"
+      >
         Добавить
       </Button>
     </div>
