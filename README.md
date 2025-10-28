@@ -1,3 +1,5 @@
+# Simple Todo app based on FSD architecture 
+
 ## Запуск проекта:
 - `npm install`
 - `npm start`
