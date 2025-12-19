@@ -5,4 +5,4 @@
 - `npm start`
 ## Запуск тестов:
 - `npm test`
-### Публичная ссылка на проект на Vercel: [клик]([https://mindbox-mico1613s-projects.vercel.app/](https://mindbox-nu.vercel.app/))
+### Публичная ссылка на проект на Vercel: [клик](https://mindbox-nu.vercel.app/)
